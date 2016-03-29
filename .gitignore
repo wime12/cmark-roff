@@ -3,3 +3,4 @@
 *.swp
 *.exe
 cmark-roff
+cmark-roff.debug
