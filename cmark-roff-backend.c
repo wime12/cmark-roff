@@ -31,7 +31,7 @@ void open_ordered_list(cmark_delim_type delim, int start, int tight) {
     fputs(".EB ", stdout);
     fputs(delim == CMARK_PERIOD_DELIM ? ". " : ") ", stdout);
     printf("%d ", start);
-    puts(tight ? "t\n" : "w");
+    puts(tight ? "t" : "w");
 }
 
 void close_ordered_list() {
