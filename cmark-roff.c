@@ -29,12 +29,10 @@ cmark_node *get_root(FILE *fp) {
 }
 
 void output_nodes(cmark_node *root) {
-    char *event;
     cmark_event_type ev_type;
     cmark_iter *iter = cmark_iter_new(root);
 
     while((ev_type = cmark_iter_next(iter)) != CMARK_EVENT_DONE) {
-	cmark_node *cur = cmark_iter_get_node(iter);
 	output_node(cmark_iter_get_node(iter), ev_type);
     }
 
@@ -42,7 +40,6 @@ void output_nodes(cmark_node *root) {
 }
 
 void output_node(cmark_node *node, cmark_event_type ev) {
-    cmark_list_type list_type;
     switch (cmark_node_get_type(node)) {
 	case CMARK_NODE_DOCUMENT:
 	    if (ev == CMARK_EVENT_ENTER)
