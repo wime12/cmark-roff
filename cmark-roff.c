@@ -142,7 +142,7 @@ void output_node(cmark_node *node, cmark_event_type ev) {
 		close_image();
 	    break;
 	default:
-	    fputs("Warning: Unknown node type.", stderr);
+	    fputs("Warning: Unknown node type.\n", stderr);
     }
 }
 
