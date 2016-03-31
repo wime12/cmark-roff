@@ -3,7 +3,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include "cmark-roff-backend.h"
+#include "backend.h"
 
 #define BUFFER_SIZE 2048
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <cmark.h>
-#include "cmark-roff-backend.h" 
+#include "backend.h" 
 
 int in_heading = 0;
 int list_item_start = 0;
@@ -22,7 +22,7 @@ void close_blockquote() {
 }
 
 void open_bullet_list(int tight) {
-    printf(".LP %s\n", tight ? "t" : "w");
+    printf(".LB %s\n", tight ? "t" : "w");
 }
 
 void close_bullet_list() {
