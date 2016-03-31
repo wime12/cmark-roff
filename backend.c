@@ -22,30 +22,31 @@ void close_blockquote() {
 }
 
 void open_bullet_list(int tight) {
-    printf(".LB %s\n", tight ? "t" : "w");
+    printf(".BB %s\n", tight ? "t" : "w");
 }
 
 void close_bullet_list() {
-    puts(".LE");
+    puts(".BE");
 }
 
 void open_ordered_list(cmark_delim_type delim, int start, int tight) {
-    fputs(".EB ", stdout);
+    fputs(".OB ", stdout);
     fputs(delim == CMARK_PERIOD_DELIM ? ". " : ") ", stdout);
     printf("%d ", start);
     puts(tight ? "t" : "w");
 }
 
 void close_ordered_list() {
-    puts(".EE");
+    puts(".OE");
 }
 
 void open_item() {
-    puts(".I");
+    puts(".IB");
     list_item_start = 1;
 }
 
 void close_item() {
+   puts(".IE");
 }
 
 void output_code_block(const char *info, const char *literal) {
@@ -110,19 +111,19 @@ void output_html_inline() {
 }
 
 void open_emph() {
-    puts(".IB");
+    puts(".EB");
 }
 
 void close_emph() {
-    puts(".IE");
+    puts(".EE");
 }
 
 void open_strong() {
-    puts(".BB");
+    puts(".SB");
 }
 
 void close_strong() {
-    puts(".BE");
+    puts(".SE");
 }
 
 void open_link(const char *url, const char *title) {
