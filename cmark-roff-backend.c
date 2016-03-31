@@ -22,7 +22,7 @@ void close_blockquote() {
 }
 
 void open_bulleted_list(int tight) {
-    puts(".LB");
+    printf(".LP %s\n", tight ? "t" : "w");
 }
 
 void close_bulleted_list() {
