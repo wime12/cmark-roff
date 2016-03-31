@@ -8,9 +8,9 @@ void open_blockquote();
 
 void close_blockquote();
 
-void open_bulleted_list(int tight);
+void open_bullet_list(int tight);
 
-void close_bulleted_list();
+void close_bullet_list();
 
 void open_ordered_list(cmark_delim_type delim, int start, int tight);
 
