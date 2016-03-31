@@ -21,11 +21,11 @@ void close_blockquote() {
     puts(".QE");
 }
 
-void open_bulleted_list(int tight) {
+void open_bullet_list(int tight) {
     printf(".LP %s\n", tight ? "t" : "w");
 }
 
-void close_bulleted_list() {
+void close_bullet_list() {
     puts(".LE");
 }
 

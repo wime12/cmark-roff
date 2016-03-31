@@ -56,9 +56,9 @@ void output_node(cmark_node *node, cmark_event_type ev) {
 	case CMARK_NODE_LIST:
 	    if (cmark_node_get_list_type(node) == CMARK_BULLET_LIST) {
 		if (ev == CMARK_EVENT_ENTER) 
-		    open_bulleted_list(cmark_node_get_list_tight(node));
+		    open_bullet_list(cmark_node_get_list_tight(node));
 		else
-		    close_bulleted_list();
+		    close_bullet_list();
 	    }
 	    else {
 		if (ev == CMARK_EVENT_ENTER)
