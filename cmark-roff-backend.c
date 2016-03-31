@@ -6,9 +6,11 @@ int in_heading = 0;
 int list_item_start = 0;
 
 void open_document() {
+    puts(".DB");
 }
 
 void close_document() {
+    puts(".DE");
 }
 
 void open_blockquote() {

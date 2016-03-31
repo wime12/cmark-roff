@@ -11,3 +11,6 @@ clean:
 
 strip: cmark-roff
 	strip cmark-roff
+
+install: strip
+	cp cmark-roff $(HOME)/.local/bin
