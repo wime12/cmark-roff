@@ -1,8 +1,33 @@
 #include <stdio.h>
 #include <cmark.h>
-#include "backend.h" 
+#include "backend.h"
 
 int in_heading = 0;
+
+int emph = 0;
+int strong = 0;
+
+int saved_emph = 0;
+int saved_strong = 0;
+
+void switch_font() {
+    if ((emph != saved_emph) || (strong != saved_strong)) {
+        if ((emph == 0) && (strong == 0)) {
+	    fputs("\\fP", stdout);
+	}
+	else if ((emph > 0) && (strong == 0)) {
+	    fputs("\\fP\\f\\*[font_emph]", stdout);
+	}
+	else if ((emph == 0) && (strong > 0)) {
+	    fputs("\\fP\\f\\*[font_strong]", stdout);
+	}
+	else {
+	    fputs("\\fP\\f\\*[font_strong_emph]", stdout);
+	}
+	saved_emph = emph;
+	saved_strong = strong;
+    }
+}
 
 void open_document() {
     puts(".DB");
@@ -84,6 +109,7 @@ void output_thematic_break() {
 }
 
 void output_text(const char *text) {
+    switch_font();
     fputs(text, stdout);
 }
 
@@ -106,19 +132,19 @@ void output_html_inline() {
 }
 
 void open_emph() {
-    puts("\n.EB");
+    emph++;
 }
 
 void close_emph() {
-    puts("\n.EE");
+    emph--;
 }
 
 void open_strong() {
-    puts("\n.SB");
+    strong++;
 }
 
 void close_strong() {
-    puts("\n.SE");
+    strong--;
 }
 
 void open_link(const char *url, const char *title) {
