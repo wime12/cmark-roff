@@ -3,7 +3,6 @@
 #include "backend.h" 
 
 int in_heading = 0;
-int list_item_start = 0;
 
 void open_document() {
     puts(".DB");
@@ -42,7 +41,6 @@ void close_ordered_list() {
 
 void open_item() {
     puts(".IB");
-    list_item_start = 1;
 }
 
 void close_item() {
@@ -64,10 +62,7 @@ void output_html_block(const char *literal) {
 }
 
 void open_paragraph() {
-    if (list_item_start) 
-	list_item_start = 0;
-    else
-	puts(".P");
+    puts(".P");
 }
 
 void close_paragraph() {
