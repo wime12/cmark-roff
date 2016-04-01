@@ -108,6 +108,7 @@ void open_heading(int level) {
 }
 
 void close_heading() {
+    switch_font();
     puts("");
     in_heading = 0;
 }
@@ -160,6 +161,7 @@ void open_link(const char *url, const char *title) {
 }
 
 void close_link() {
+    switch_font();
     puts(".RE");
 }
 
@@ -168,5 +170,6 @@ void open_image(const char *url, const char *title) {
 }
 
 void close_image() {
+    switch_font()
     puts(".PE");
 }
