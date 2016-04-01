@@ -10,23 +10,30 @@ int strong = 0;
 int saved_emph = 0;
 int saved_strong = 0;
 
-void switch_font() {
+int switch_font() {
+
     if ((emph != saved_emph) || (strong != saved_strong)) {
-        if ((emph == 0) && (strong == 0)) {
+
+        if ((saved_emph > 0) || (saved_strong > 0)) {
 	    fputs("\\fP", stdout);
 	}
-	else if ((emph > 0) && (strong == 0)) {
-	    fputs("\\fP\\f\\*[font_emph]", stdout);
+
+	if ((emph > 0) && (strong == 0)) {
+	    fputs("\\f[emph]", stdout);
 	}
 	else if ((emph == 0) && (strong > 0)) {
-	    fputs("\\fP\\f\\*[font_strong]", stdout);
+	    fputs("\\f[strong]", stdout);
 	}
-	else {
-	    fputs("\\fP\\f\\*[font_strong_emph]", stdout);
+	else if ((emph > 0) && (strong > 0)) {
+	    fputs("\\f[strongemph]", stdout);
 	}
+
 	saved_emph = emph;
 	saved_strong = strong;
+
+	return 1;
     }
+    return 0;
 }
 
 void open_document() {
@@ -91,6 +98,7 @@ void open_paragraph() {
 }
 
 void close_paragraph() {
+    switch_font();
     puts("");
 }
 
