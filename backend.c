@@ -106,19 +106,19 @@ void output_html_inline() {
 }
 
 void open_emph() {
-    puts(".EB");
+    puts("\n.EB");
 }
 
 void close_emph() {
-    puts(".EE");
+    puts("\n.EE");
 }
 
 void open_strong() {
-    puts(".SB");
+    puts("\n.SB");
 }
 
 void close_strong() {
-    puts(".SE");
+    puts("\n.SE");
 }
 
 void open_link(const char *url, const char *title) {
