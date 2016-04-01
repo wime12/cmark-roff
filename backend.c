@@ -19,13 +19,13 @@ int switch_font() {
 	}
 
 	if ((emph > 0) && (strong == 0)) {
-	    fputs("\\f[emph]", stdout);
+	    fputs("\\*[emph]", stdout);
 	}
 	else if ((emph == 0) && (strong > 0)) {
-	    fputs("\\f[strong]", stdout);
+	    fputs("\\*[strong]", stdout);
 	}
 	else if ((emph > 0) && (strong > 0)) {
-	    fputs("\\f[strongemph]", stdout);
+	    fputs("\\*[strongemph]", stdout);
 	}
 
 	saved_emph = emph;
