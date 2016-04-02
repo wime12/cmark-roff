@@ -171,5 +171,5 @@ void open_image(const char *url, const char *title) {
 
 void close_image() {
     switch_font();
-    puts(".PE");
+    puts("\n.PE");
 }
