@@ -131,9 +131,9 @@ void output_linebreak() {
 }
 
 void output_code(const char *literal) {
-    puts(".TB");
+    fputs("\\f(CW", stdout);
     fputs(literal, stdout);
-    puts(".TE");
+    fputs("\\fP", stdout);
 }
 
 /* TODO: How to deal with that? */
