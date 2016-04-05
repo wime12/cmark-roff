@@ -1,0 +1,10 @@
+.foo
+'bar
+abc def
+'blupp
+.bla
+=======
+
+abc def
+.bla blupp
+'foo bar
