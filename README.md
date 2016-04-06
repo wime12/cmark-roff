@@ -112,4 +112,4 @@ while retaining a readable input.
 
   - **.T**
 
-    Useful for ornamental breaks or separating straigt lines.
+    Useful for ornamental breaks or separating straight lines.
