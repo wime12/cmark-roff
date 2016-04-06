@@ -11,6 +11,7 @@ int saved_emph = 0;
 int saved_strong = 0;
 
 int new_line = 0;
+int new_paragraph = 0;
 
 int switch_font() {
 
@@ -106,7 +107,7 @@ void output_html_block(const char *literal) {
 
 void open_paragraph() {
     puts(".P");
-    new_line = 1;
+    new_line = new_paragraph = 1;
 }
 
 void close_paragraph() {
@@ -135,10 +136,19 @@ void output_thematic_break() {
 
 void output_text(const char *text) {
     switch_font();
-    if (new_line && (text[0] == '.' || text[0] == '\''))
+    const char *txt = text;
+    if (new_line && (text[0] == '.' || text[0] =='\'')) {
         fputs("\\&", stdout);
-    fputs(text, stdout);
-    new_line = 0;
+    }
+    else if (new_paragraph
+             && txt[0] != 0 && txt[0] == (char)0xe2
+	     && txt[1] != 0 && txt[1] == (char)0x80
+	     && txt[2] != 0 && (txt[2] == (char)0x8b || txt[2] == (char)0x8c)) {
+        puts(".I");
+        txt = &(txt[3]);
+    }
+    fputs(txt, stdout);
+    new_line = new_paragraph = 0;
 }
 
 void output_softbreak() {
