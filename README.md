@@ -54,8 +54,7 @@ while retaining a readable input.
     Starts an ordered (numbered) list. *\<delim>* is the delimiter
     ('.' or ')') used after the number and *\<start>* specifies the
     number with which the list will start. If *\<tight>* is 't'
-    then a tight list is requested and a wide list for 'w'.  Like
-    with bullet lists *\<tight>*
+    then a tight list is requested and a wide list for 'w'.
 
   - **.OE**
 
@@ -103,11 +102,11 @@ while retaining a readable input.
 
 - **Headings**
 
-  - **.H**x *\<text>*
+  - **.H**x *\<text>*, x = 1, ..., 5
 
     Forms a heading. *\<text>* contains the text of the heading.
-    All line breaks that occur in the CommonMark input of Setext
-    headings text are removed.
+    All line breaks that may occur in the text of Setext headings
+    are removed.
 
 - **Thematic Break**
 
