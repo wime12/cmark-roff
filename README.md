@@ -91,9 +91,9 @@ while retaining a readable input.
   - **.I**
 
     Sometimes it is necessary to control the indentation of a
-    paragraph. If the paragraph text starts with the unicode
-    characters U+200B (zero width space, HTML &zwsp;) or U+200C
-    (zero width non-joiner, HTML &zwnj;) the **.I** macro is issued
+    paragraph. If the paragraph text starts with the Unicode
+    characters U+200B (zero width space, HTML \&#x200B;) or U+200C
+    (zero width non-joiner, HTML \&zwnj;) the **.I** macro is issued
     directly after the **.P** macro and the zero width space or
     zero width non-joiner are deleted from the start of the text
     of the paragraph. This is an extension of the CommonMark
@@ -106,7 +106,7 @@ while retaining a readable input.
 
     Forms a heading. *\<text>* contains the text of the heading.
     All line breaks that may occur in the text of Setext headings
-    are removed.
+    are replaced by spaces.
 
 - **Thematic Break**
 
