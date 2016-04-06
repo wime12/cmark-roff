@@ -32,9 +32,9 @@ letters ... .
 
 - **Bullet Lists**
 
-  - **.BB** *<tight>*
+  - **.BB** *\<tight>*
 
-    Starts a bullet (unordered) list. *<tight>* can be 't' or 'w'
+    Starts a bullet (unordered) list. *\<tight>* can be 't' or 'w'
     for tight or wide lists, respectively.
 
   - **.BE**
@@ -43,13 +43,13 @@ letters ... .
 
 - **Ordered Lists**
 
-  - **.OB** *<delim>* *<start>* *<tight>*
+  - **.OB** *\<delim>* *\<start>* *\<tight>*
 
-    Starts an ordered (numbered) list. *<delim>* is the delimiter
-    ('.' or ')') used after the number and *<start>* specifies the
-    number with which the list will start. If *<tight>* is 't' then
+    Starts an ordered (numbered) list. *\<delim>* is the delimiter
+    ('.' or ')') used after the number and *\<start>* specifies the
+    number with which the list will start. If *\<tight>* is 't' then
     a tight list is requested and a wide list for 'w'.  Like with
-    bullet lists *<tight>*
+    bullet lists *\<tight>*
 
   - **.OE**
 
@@ -67,9 +67,9 @@ letters ... .
 
 - **Code Blocks**
 
-  - **.CB** *<info>*
+  - **.CB** *\<info>*
 
-    Starts a code block. The type of code is given by *<info>*. The
+    Starts a code block. The type of code is given by *\<info>*. The
     next line after this macro begins directly with the literal
     text of the code block.
 
