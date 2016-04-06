@@ -9,8 +9,8 @@ books, letters, ... .
 
 The roff family of typesetting systems are fast, do not need many
 resources and are very flexible. Together with cmark input they
-provide an easy to use system to produce good looking documents
-while retaining the readability of the source.
+provide an easy to use system for producing good looking documents
+while retaining a readable input.
 
 
 ### Macros
@@ -82,3 +82,35 @@ while retaining the readability of the source.
   - **.CE**
 
     Ends a code block.
+
+- **Paragraph**
+
+  - **.P**
+
+    Starts a paragraph.
+
+  - **.I**
+
+    Sometimes it is necessary to control the indentation of a
+    paragraph. If the paragraph text starts with the unicode
+    characters U+200B (zero width space, HTML &zwsp;) or U+200C
+    (zero width non-joiner, HTML &zwnj;) the **.I** macro is issued
+    directly after the **.P** macro and the zero width space or
+    zero width non-joiner are deleted from the start of the text
+    of the paragraph. This is an extension of the CommonMark
+    specification. I chose those two characters because they are
+    invisible and do not alter, e.g., the HTML rendering.
+
+- **Headings**
+
+  - **.H**x *\<text>*
+
+    Forms a heading. *\<text>* contains the text of the heading.
+    All line breaks that occur in the CommonMark input of Setext
+    headings text are removed.
+
+- **Thematic Break**
+
+  - **.T**
+
+    Useful for ornamental breaks or separating straigt lines.
