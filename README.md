@@ -1,11 +1,17 @@
 ## cmark-roff
 
 **cmark-roff** is a backend for the CommonMark parsing and rendering
-library *cmark*. It transforms CommonMark input to roff macros,
+library **cmark**. It transforms CommonMark input to roff macros,
 escape sequences and text. No special existing macro package for
-roff is the target. Instead the user should write her own macro
-packages for the intended formats like articles, reports, books,
-letters ... .
+roff is the target. Instead the user should write his or her own
+macro packages for the intended formats like articles, reports,
+books, letters, ... .
+
+The roff family of typesetting systems are fast, do not need many
+resources and are very flexible. Together with cmark input they
+provide an easy to use system to produce good looking documents
+while retaining the readability of the source.
+
 
 ### Macros
 
@@ -47,9 +53,9 @@ letters ... .
 
     Starts an ordered (numbered) list. *\<delim>* is the delimiter
     ('.' or ')') used after the number and *\<start>* specifies the
-    number with which the list will start. If *\<tight>* is 't' then
-    a tight list is requested and a wide list for 'w'.  Like with
-    bullet lists *\<tight>*
+    number with which the list will start. If *\<tight>* is 't'
+    then a tight list is requested and a wide list for 'w'.  Like
+    with bullet lists *\<tight>*
 
   - **.OE**
 
@@ -69,8 +75,8 @@ letters ... .
 
   - **.CB** *\<info>*
 
-    Starts a code block. The type of code is given by *\<info>*. The
-    next line after this macro begins directly with the literal
+    Starts a code block. The type of code is given by *\<info>*.
+    The next line after this macro begins directly with the literal
     text of the code block.
 
   - **.CE**
