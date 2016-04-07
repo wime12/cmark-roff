@@ -2,7 +2,7 @@
 
 **cmark-roff** is a backend for the CommonMark parsing and rendering
 library **cmark**. It transforms CommonMark input to roff macros,
-escape sequences and text. **cmar-roff** does not target any of the
+escape sequences and text. **cmark-roff** does not target any of the
 existing macro packages for roff. Instead the user should write his
 or her own macro packages for the intended formats like articles,
 reports, books, letters, ... .
@@ -38,9 +38,9 @@ while retaining a readable input.
 
 ##### Bullet Lists
 
-  - `.BB` *\<tight>*
+  - `.BB` *tight*
 
-    Starts a bullet (unordered) list. *\<tight>* can be 't' or 'w'
+    Starts a bullet (unordered) list. The argument *tight* can be 't' or 'w'
     for tight or wide lists, respectively.
 
   - `.BE`
@@ -49,11 +49,11 @@ while retaining a readable input.
 
 ##### Ordered Lists
 
-  - `.OB` *\<delim>* *\<start>* *\<tight>*
+  - `.OB` *delim* *start* *tight*
 
-    Starts an ordered (numbered) list. *\<delim>* is the delimiter
-    ('.' or ')') used after the number and *\<start>* specifies the
-    number with which the list will start. If *\<tight>* is 't'
+    Starts an ordered (numbered) list. *delim* is the delimiter
+    ('.' or ')') used after the number and *start* specifies the
+    number with which the list will start. If *tight* is 't'
     then a tight list is requested and a wide list for 'w'.
 
   - `.OE`
@@ -72,9 +72,9 @@ while retaining a readable input.
 
 ##### Code Blocks
 
-  - `.CB` *\<info>*
+  - `.CB` *info*
 
-    Starts a code block. The type of code is given by *\<info>*.
+    Starts a code block. The type of code is given by *info*.
     The next line after this macro begins directly with the literal
     text of the code block.
 
@@ -102,9 +102,9 @@ while retaining a readable input.
 
 ##### Headings
 
-  - `.H`*x* *\<text>* (x = 1, ..., 5)
+  - `.H`*x* *text* (x = 1, ..., 5)
 
-    Forms a heading. *\<text>* contains the text of the heading.
+    Forms a heading. *text* contains the text of the heading.
     All line breaks that may occur in the text of Setext headings
     are replaced by spaces.
 
