@@ -146,3 +146,10 @@ while retaining a readable input.
   be changed. Usually emphasized text is then set in a roman typeface,
   strong text in bold italic and strongly emphasized text in a bold
   typeface.
+  
+  When strong, emphasized or strongly emphasized text ends, `\fP` switches
+  back to the previous font. **cmark-roff** respects the nesting of
+  emphasis and strong emphasis. But within such a nesting
+  **cmark-roff** will output a `\fP` before switching to the new style.
+  So `\fP` always refers to the normal font of the surrounding
+  text.
