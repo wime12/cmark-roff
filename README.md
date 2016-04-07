@@ -15,7 +15,7 @@ while retaining a readable input.
 
 ### Macros
 
-- ##### Document
+##### Document
 
   - `.DB`
 
@@ -26,7 +26,7 @@ while retaining a readable input.
     Cleanup actions after the processing of the document can be
     done in this macro.
 
-- **Block Quotes**
+##### Block Quotes
 
   - `.QB`
 
@@ -36,7 +36,7 @@ while retaining a readable input.
 
     Ends a blockquote.
 
-- **Bullet Lists**
+##### Bullet Lists
 
   - `.BB` *\<tight>*
 
@@ -47,7 +47,7 @@ while retaining a readable input.
 
     Ends a bullet list.
 
-- **Ordered Lists**
+##### Ordered Lists
 
   - `.OB` *\<delim>* *\<start>* *\<tight>*
 
@@ -60,7 +60,7 @@ while retaining a readable input.
 
     Ends an ordered list.
 
-- **List Items**
+##### List Items
 
   - `.IB`
 
@@ -70,7 +70,7 @@ while retaining a readable input.
 
     Ends a list item.
 
-- **Code Blocks**
+##### Code Blocks
 
   - `.CB` *\<info>*
 
@@ -82,7 +82,7 @@ while retaining a readable input.
 
     Ends a code block.
 
-- **Paragraph**
+##### Paragraph
 
   - `.P`
 
@@ -94,13 +94,13 @@ while retaining a readable input.
     paragraph. If the paragraph text starts with the Unicode
     characters U+200B (zero width space, HTML \&#x200B;) or U+200C
     (zero width non-joiner, HTML \&zwnj;) the `.I` macro is issued
-    directly after the `.P` macro and the zero width space or
-    zero width non-joiner are deleted from the start of the text
-    of the paragraph. This is an extension of the CommonMark
-    specification. I chose those two characters because they are
-    invisible and do not alter, e.g., the HTML rendering.
+    directly after the `.P` macro and the zero width space or zero
+    width non-joiner are deleted from the start of the text of the
+    paragraph. This is an extension of the CommonMark specification.
+    I chose those two characters because they are invisible and do
+    not alter, e.g., the HTML rendering.
 
-- **Headings**
+##### Headings
 
   - `.H`x *\<text>*, x = 1, ..., 5
 
@@ -108,20 +108,41 @@ while retaining a readable input.
     All line breaks that may occur in the text of Setext headings
     are replaced by spaces.
 
-- **Thematic Break**
+##### Thematic Break
 
   - `.T`
 
 
-### Inline 
+### Inline
 
-- **Softbreaks and Linebreaks**
+##### Softbreaks and Linebreaks
 
-  For soft breaks **cmark-roff** just writes the return character "\n".
-  Linebreaks are realised by putting the native roff macro `.br` into the
-  text.
+  For soft breaks **cmark-roff** just writes the return character
+  "\n".  Linebreaks are realised by putting the native roff macro
+  `.br` into the text.
 
-- ** Inline 
+##### Inline Code
 
-  
+  For inline code expressed by surrounding text with `\`` escape
+  sequence `\f(CW` for switching to the fixed width font is used.
+  The inline code is terminated with `\fP` to switch back to the
+  previous font.
 
+##### Emph And Strong
+
+  Only three levels of emphasis and strong text are supported:
+  emphasis, strong and strong emphasis. More than three levels are
+  expressed as strong emphasis, so `****some text****` is the same
+  as `***some text***`.
+
+  The backend starts the emphasized or strong
+  text with `\*[emph]', `\*[strong]` and `\*[strongemph]`. Note
+  that these escape sequences refer to roff *strings* and not
+  directly to font changes. The *strings* should contain the escape
+  sequences for switching the fonts. This results in a dynamic font
+  changing scheme. The programmer of the roff macros might wish to,
+  e.g., switch to an italic font for the normal font of block quotes.
+  Therefore the fonts for emphasized, strong and strongly emphasized
+  must be changed. Usually emphasized text is then set in roman
+  typeface, strong text in bold italic and strongly emphasized text in
+  bold typeface.
