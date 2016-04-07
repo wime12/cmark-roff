@@ -102,7 +102,7 @@ while retaining a readable input.
 
 ##### Headings
 
-  - `.H`*x* *text* (x = 1, ..., 5)
+  - `.H`*n* *text* (x = 1, ..., 5)
 
     Forms a heading. *text* contains the text of the heading.
     All line breaks that may occur in the text of Setext headings
