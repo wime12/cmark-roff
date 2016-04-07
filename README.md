@@ -2,10 +2,10 @@
 
 **cmark-roff** is a backend for the CommonMark parsing and rendering
 library **cmark**. It transforms CommonMark input to roff macros,
-escape sequences and text. No special existing macro package for
-roff is the target. Instead the user should write his or her own
-macro packages for the intended formats like articles, reports,
-books, letters, ... .
+escape sequences and text. **cmar-roff** does not target any of the
+existing macro packages for roff. Instead the user should write his
+or her own macro packages for the intended formats like articles,
+reports, books, letters, ... .
 
 The roff family of typesetting systems are fast, do not need many
 resources and are very flexible. Together with cmark input they
@@ -17,84 +17,84 @@ while retaining a readable input.
 
 - **Document**
 
-  - **.DB**
+  - `.DB`
 
     Issued at the start of a document. Can be used for setup.
 
-  - **.DE**
+  - `.DE`
 
     Cleanup actions after the processing of the document can be
     done in this macro.
 
 - **Block Quotes**
 
-  - **.QB**
+  - `.QB`
 
     Starts a blockquote.
 
-  - **.QE**
+  - `.QE`
 
     Ends a blockquote.
 
 - **Bullet Lists**
 
-  - **.BB** *\<tight>*
+  - `.BB` *\<tight>*
 
     Starts a bullet (unordered) list. *\<tight>* can be 't' or 'w'
     for tight or wide lists, respectively.
 
-  - **.BE**
+  - `.BE`
 
     Ends a bullet list.
 
 - **Ordered Lists**
 
-  - **.OB** *\<delim>* *\<start>* *\<tight>*
+  - `.OB` *\<delim>* *\<start>* *\<tight>*
 
     Starts an ordered (numbered) list. *\<delim>* is the delimiter
     ('.' or ')') used after the number and *\<start>* specifies the
     number with which the list will start. If *\<tight>* is 't'
     then a tight list is requested and a wide list for 'w'.
 
-  - **.OE**
+  - `.OE`
 
     Ends an ordered list.
 
 - **List Items**
 
-  - **.IB**
+  - `.IB`
 
     Starts a list item.
 
-  - **.IE**
+  - `.IE`
 
     Ends a list item.
 
 - **Code Blocks**
 
-  - **.CB** *\<info>*
+  - `.CB` *\<info>*
 
     Starts a code block. The type of code is given by *\<info>*.
     The next line after this macro begins directly with the literal
     text of the code block.
 
-  - **.CE**
+  - `.CE`
 
     Ends a code block.
 
 - **Paragraph**
 
-  - **.P**
+  - `.P`
 
     Starts a paragraph.
 
-  - **.I**
+  - `.I`
 
     Sometimes it is necessary to control the indentation of a
     paragraph. If the paragraph text starts with the Unicode
     characters U+200B (zero width space, HTML \&#x200B;) or U+200C
-    (zero width non-joiner, HTML \&zwnj;) the **.I** macro is issued
-    directly after the **.P** macro and the zero width space or
+    (zero width non-joiner, HTML \&zwnj;) the `.I` macro is issued
+    directly after the `.P` macro and the zero width space or
     zero width non-joiner are deleted from the start of the text
     of the paragraph. This is an extension of the CommonMark
     specification. I chose those two characters because they are
@@ -102,7 +102,7 @@ while retaining a readable input.
 
 - **Headings**
 
-  - **.H**x *\<text>*, x = 1, ..., 5
+  - `.H`x *\<text>*, x = 1, ..., 5
 
     Forms a heading. *\<text>* contains the text of the heading.
     All line breaks that may occur in the text of Setext headings
@@ -110,6 +110,10 @@ while retaining a readable input.
 
 - **Thematic Break**
 
-  - **.T**
+  - `.T`
 
-    Useful for ornamental breaks or separating straight lines.
+
+### Inline 
+
+- Linebreak
+
