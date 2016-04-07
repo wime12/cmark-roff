@@ -15,7 +15,7 @@ while retaining a readable input.
 
 ### Macros
 
-- **Document**
+- ##### Document
 
   - `.DB`
 
@@ -115,5 +115,13 @@ while retaining a readable input.
 
 ### Inline 
 
-- Linebreak
+- **Softbreaks and Linebreaks**
+
+  For soft breaks **cmark-roff** just writes the return character "\n".
+  Linebreaks are realised by putting the native roff macro `.br` into the
+  text.
+
+- ** Inline 
+
+  
 
