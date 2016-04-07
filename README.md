@@ -82,7 +82,7 @@ while retaining a readable input.
 
     Ends a code block.
 
-##### Paragraph
+##### Paragraphs
 
   - `.P`
 
@@ -102,7 +102,7 @@ while retaining a readable input.
 
 ##### Headings
 
-  - `.H`x *\<text>*, x = 1, ..., 5
+  - `.H`x *\<text>* (x = 1, ..., 5)
 
     Forms a heading. *\<text>* contains the text of the heading.
     All line breaks that may occur in the text of Setext headings
@@ -118,7 +118,7 @@ while retaining a readable input.
 ##### Softbreaks and Linebreaks
 
   For soft breaks **cmark-roff** just writes the return character
-  "\n".  Linebreaks are realised by putting the native roff macro
+  "\n".  Linebreaks are realized by putting the native roff macro
   `.br` into the text.
 
 ##### Inline Code
@@ -135,14 +135,14 @@ while retaining a readable input.
   expressed as strong emphasis, so `****some text****` is the same
   as `***some text***`.
 
-  The backend starts the emphasized or strong
-  text with `\*[emph]`, `\*[strong]` and `\*[strongemph]`. Note
-  that these escape sequences refer to roff *strings* and not
-  directly to font changes. The *strings* should contain the escape
-  sequences for switching the fonts. This results in a dynamic font
-  changing scheme. The programmer of the roff macros might wish to,
-  e.g., switch to an italic font for the normal font of block quotes.
-  Therefore the fonts for emphasized, strong and strongly emphasized
-  must be changed. Usually emphasized text is then set in roman
-  typeface, strong text in bold italic and strongly emphasized text in
-  bold typeface.
+  The backend starts the emphasized or strong text with `\*[emph]`,
+  `\*[strong]` and `\*[strongemph]`. Note that these escape sequences
+  refer to roff *strings* and not directly to font changes. The
+  *strings* should contain the escape sequences for switching the
+  fonts. This results in a dynamic font changing scheme. The
+  programmer of the roff macros might wish to, e.g., switch to an
+  italic font for the normal font of block quotes.  Therefore the
+  fonts for emphasized, strong and strongly emphasized text must
+  be changed. Usually emphasized text is then set in a roman typeface,
+  strong text in bold italic and strongly emphasized text in a bold
+  typeface.
