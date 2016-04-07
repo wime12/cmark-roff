@@ -108,7 +108,7 @@ while retaining a readable input.
     All line breaks that may occur in the text of Setext headings
     are replaced by spaces.
 
-##### Thematic Break
+##### Thematic Breaks
 
   - `.T`
 
@@ -136,7 +136,7 @@ while retaining a readable input.
   as `***some text***`.
 
   The backend starts the emphasized or strong
-  text with `\*[emph]', `\*[strong]` and `\*[strongemph]`. Note
+  text with `\*[emph]`, `\*[strong]` and `\*[strongemph]`. Note
   that these escape sequences refer to roff *strings* and not
   directly to font changes. The *strings* should contain the escape
   sequences for switching the fonts. This results in a dynamic font
