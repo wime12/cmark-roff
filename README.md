@@ -123,7 +123,7 @@ while retaining a readable input.
 
 ##### Inline Code
 
-  For inline code expressed by surrounding text with `\`` escape
+  For inline code expressed by surrounding text with `` ` `` the escape
   sequence `\f(CW` for switching to the fixed width font is used.
   The inline code is terminated with `\fP` to switch back to the
   previous font.
