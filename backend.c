@@ -2,6 +2,19 @@
 #include <cmark.h>
 #include "backend.h"
 
+static const char utf8_skip_data[256] = {
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,6,6,1,1
+};
+
+const char * const skip = utf8_skip_data;
+
 int in_heading = 0;
 
 int emph = 0;
@@ -12,6 +25,29 @@ int saved_strong = 0;
 
 int new_line = 0;
 int new_paragraph = 0;
+
+void output_escaped(const char *str) {
+    if (new_line) {
+	if (new_line && (str[0] == '.' || str[0] == '\'')) {
+	    fputs("\\&", stdout);
+	}
+	else if (new_paragraph && str[0] == (char)0xe2
+		 && str[1] == (char)0x80
+		 && (str[2] == (char)0x8b || str[2] == (char)0x8c)) {
+	    puts(".I");
+	    str = &(str[3]);
+	}
+    }
+
+    while (str[0]) {
+	unsigned char s = skip[(unsigned char)str[0]];
+
+	if (str[0] == '\\') putc((int)'\\', stdout);
+	for (int j = 0; j < s; j++)
+	    putc((int)str[j], stdout);
+	str += s;
+    }
+}
 
 int switch_font() {
 
@@ -93,7 +129,7 @@ void close_item() {
 
 void output_code_block(const char *info, const char *literal) {
     printf(".CB \"%s\n", info);
-    fputs(literal, stdout);
+    output_escaped(literal);
     puts(".CE");
     new_line = 1;
 }
@@ -101,8 +137,8 @@ void output_code_block(const char *info, const char *literal) {
 /* Use html_blocks to output literal roff commands
    TODO: remove first and last line of literal */
 void output_html_block(const char *literal) {
-    fputs(literal, stdout);
-    new_line = 1;
+    // fputs(literal, stdout);
+    // new_line = 1;
 }
 
 void open_paragraph() {
@@ -112,7 +148,7 @@ void open_paragraph() {
 
 void close_paragraph() {
     switch_font();
-    puts("");
+    putc((int)'\n', stdout);
     new_line = 1;
 }
 
@@ -124,7 +160,7 @@ void open_heading(int level) {
 
 void close_heading() {
     switch_font();
-    puts("");
+    putc((int)'\n', stdout);
     in_heading = 0;
     new_line = 1;
 }
@@ -136,28 +172,17 @@ void output_thematic_break() {
 
 void output_text(const char *text) {
     switch_font();
-    const char *txt = text;
-    if (new_line && (text[0] == '.' || text[0] =='\'')) {
-        fputs("\\&", stdout);
-    }
-    else if (new_paragraph
-             && txt[0] != 0 && txt[0] == (char)0xe2
-	     && txt[1] != 0 && txt[1] == (char)0x80
-	     && txt[2] != 0 && (txt[2] == (char)0x8b || txt[2] == (char)0x8c)) {
-        puts(".I");
-        txt = &(txt[3]);
-    }
-    fputs(txt, stdout);
+    output_escaped(text);
     new_line = new_paragraph = 0;
 }
 
 void output_softbreak() {
     if (in_heading) {
-        fputs(" ", stdout);
+        putc((int)' ', stdout);
 	new_line = 0;
     }
     else {
-        puts("");
+        putc((int)'\n', stdout);
 	new_line = 1;
     }
 }
@@ -168,7 +193,9 @@ void output_linebreak() {
 }
 
 void output_code(const char *literal) {
-    printf("\\f(CW%s\\fP", literal);
+    fputs("\\f(CW", stdout);
+    output_escaped(literal);
+    fputs("\\fP", stdout);
     new_line = 0;
 }
 
@@ -213,3 +240,5 @@ void close_image() {
     fputs("\n.PE", stdout);
     new_line = 1;
 }
+
+// vim:sw=4:
